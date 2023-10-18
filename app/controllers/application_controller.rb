@@ -5,30 +5,49 @@ require "net/http"
 require "json"
 
 class ApplicationController < ActionController::Base
-  # utility method that can be used to fetch and process JSON data.
+  #   # utility method that can be used to fetch and process JSON data.
+
   def import_data_from_json
+    # Character code
     characters_url = "https://rickandmortyapi.com/api/character/"
+    characters_data = []
+
+    # Load data from first 20 pages/52
+    (1..20).each do |page|
+      page_url = "#{characters_url}?page=#{page}"
+      page_data = fetch_character_data(page_url)
+
+      characters_data.concat(page_data)
+    end
+
+    # Episode code
     episodes_url = "https://rickandmortyapi.com/api/episode"
+    episodes_data = []
 
-    # Use Net::HTTP to make an HTTP GET request to the URL
-    characters_uri = URI(characters_url)
-    characters_response = Net::HTTP.get(characters_uri)
-    puts "Characters Response: #{characters_response}" # Debugging line
+    # Load data from first pages
+    (1..3).each do |page|
+      page_url = "#{episodes_url}?page=#{page}"
+      page_data = fetch_episode_data(page_url)
 
-    # Parse the JSON response for characters
-    characters_data = JSON.parse(characters_response)
-    puts "Parsed Characters Data: #{characters_data}" # Debugging line
+      episodes_data.concat(page_data)
+    end
 
-    # Repeat the process for episodes
-    episodes_uri = URI(episodes_url)
-    episodes_response = Net::HTTP.get(episodes_uri)
-    puts "Episodes Response: #{episodes_response}" # Debugging line
+    # Return the parsed data as a hash
+    { characters_data:, episodes_data: }
+  end
 
-    # Parse the JSON response for episodes
-    episodes_data = JSON.parse(episodes_response)
-    puts "Parsed Episodes Data: #{episodes_data}" # Debugging line
+  private
 
-    # Return the parsed data as a array
-    { characters_data: characters_data["results"], episodes_data: episodes_data["results"] }
+  def fetch_character_data(url)
+    uri = URI(url)
+    response = Net::HTTP.get(uri)
+    #     # Parse the JSON response for characters
+    JSON.parse(response)["results"]
+  end
+
+  def fetch_episode_data(url)
+    uri = URI(url)
+    response = Net::HTTP.get(uri)
+    JSON.parse(response)["results"]
   end
 end

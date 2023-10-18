@@ -5,14 +5,12 @@ require "net/http"
 require "json"
 
 class ApplicationController < ActionController::Base
-  #   # utility method that can be used to fetch and process JSON data.
-
   def import_data_from_json
     # Character code
     characters_url = "https://rickandmortyapi.com/api/character/"
     characters_data = []
 
-    # Load data from first 20 pages/52
+    # Load data from first 20 pages
     (1..20).each do |page|
       page_url = "#{characters_url}?page=#{page}"
       page_data = fetch_character_data(page_url)

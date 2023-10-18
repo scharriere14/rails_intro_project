@@ -3,9 +3,9 @@
 one:
   title: MyString
   air_date: 2023-10-17
-  episode_number: 1
+  episode_number: MyText
 
 two:
   title: MyString
   air_date: 2023-10-17
-  episode_number: 1
+  episode_number: MyText

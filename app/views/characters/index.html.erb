@@ -1,2 +1,9 @@
-<h1>Characters#index</h1>
-<p>Find me in app/views/characters/index.html.erb</p>
+<h1 class="title">Characters</h1>
+
+<ol class="ml-5">
+<% @characters.each do |c|%>
+<li>
+<%= link_to c.name , c %>
+</li>
+<% end %>
+</ol>

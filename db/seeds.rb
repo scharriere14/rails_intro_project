@@ -31,11 +31,21 @@ end
 
 # Seed the 'episodes' table
 episodes_data.each do |episode_data|
-  Episode.create(
-    id:              episode_data["id"],
-    title:           episode_data["name"],
-    air_date:        episode_data["air_date"],
-    episode_number:  episode_data["episode"],
-    characters_http: episode_data["characters"]
+  # episode_number = episode_data["episode"].split("E").last
+
+  episode = Episode.create(
+    id:                  episode_data["id"],
+    title:               episode_data["name"],
+    air_date:            episode_data["air_date"],
+    episode_number:      episode_data["episode"],
+    characters_episodes: episode_data["characters"]
   )
+
+  # Make the link between tables
+  #  iterates through an array of character URLs associated with the episode's data.
+  episode_data["characters"].each do |character_url|
+    character_id = character_url.split("/").last
+    character = Character.find_by(id: character_id)
+    episode.characters << character if character
+  end
 end

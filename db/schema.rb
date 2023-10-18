@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_17_203016) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_18_045113) do
   create_table "characters", force: :cascade do |t|
     t.string "name"
     t.string "status"
@@ -22,13 +22,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_17_203016) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "characters_episodes", id: false, force: :cascade do |t|
+    t.integer "character_id", null: false
+    t.integer "episode_id", null: false
+  end
+
   create_table "episodes", force: :cascade do |t|
     t.string "title"
     t.date "air_date"
-    t.integer "episode_number"
+    t.text "episode_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "characters_episodes"
     t.text "characters_http"
+    t.integer "character_id"
+    t.index ["character_id"], name: "index_episodes_on_character_id"
   end
 
+  add_foreign_key "episodes", "characters"
 end

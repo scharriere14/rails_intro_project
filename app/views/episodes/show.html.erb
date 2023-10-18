@@ -1,2 +1,16 @@
-<h1>Episodes#show</h1>
-<p>Find me in app/views/episodes/show.html.erb</p>
+ <div class="container has-text-centered">
+<h1 class="title"><%= @episode.title %> <%= @episode.episode_number%></h1>
+
+<%= %>
+
+</div>
+
+
+<p>First Aired: <%= @episode.air_date%> </p>
+
+<p>Characters:</p>
+<ul>
+  <% @character_names.each do |character_name| %>
+    <li><%= character_name %></li>
+  <% end %>
+</ul>

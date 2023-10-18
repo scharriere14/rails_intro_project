@@ -8,9 +8,16 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
   </head>
 
-  <body>
+<body>
+  <section class="section">
+    <div class="container has-text-centered">
+      <%# <h1 class="title">Centered Title</h1> %>
+    </div>
     <%= yield %>
-  </body>
+  </section>
+</body>
 </html>

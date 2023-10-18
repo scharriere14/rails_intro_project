@@ -10,7 +10,11 @@
 
 <p>Characters:</p>
 <ul>
-  <% @character_names.each do |character_name| %>
-    <li><%= character_name %></li>
+  <% @character_ids.each do |character_id| %>
+   <% character = Character.find_by_id(character_id) %>
+   <%# need to check because not everyone is listed %>
+    <% if character %>
+      <li><%= link_to character.name, character_path(character) %></li>
+  <% end %>
   <% end %>
 </ul>

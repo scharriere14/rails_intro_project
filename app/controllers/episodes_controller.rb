@@ -10,6 +10,7 @@ class EpisodesController < ApplicationController
     character_urls_json = @episode.characters_episodes
     character_urls = JSON.parse(character_urls_json) # Parse the JSON string to an array
     @character_names = fetch_character_names(character_urls)
+    @character_ids = fetch_character_ids(character_urls)
   end
 
   private
@@ -18,5 +19,12 @@ class EpisodesController < ApplicationController
     character_ids = character_urls.map { |url| url.split("/").last.to_i }
     characters = Character.where(id: character_ids)
     characters.pluck(:name)
+  end
+
+  def fetch_character_ids(character_urls)
+    character_ids = character_urls.map { |url| url.split("/").last.to_i }
+    puts "Character URLs: #{character_urls}"
+    puts "Character IDs: #{character_ids}"
+    character_ids
   end
 end

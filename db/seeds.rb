@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
 require "application_controller"
 
 # db/seeds/seed_characters_and_episodes.rb
@@ -16,7 +9,6 @@ characters_data = ApplicationController.new.import_data_from_json[:characters_da
 episodes_data = ApplicationController.new.import_data_from_json[:episodes_data]
 
 # Seed the 'characters' table
-# note there is a un added episodes list that lists episodes via html
 characters_data.each do |character_data|
   Character.create(
     id:      character_data["id"],
@@ -34,11 +26,11 @@ episodes_data.each do |episode_data|
   # episode_number = episode_data["episode"].split("E").last
 
   episode = Episode.create(
-    id:                  episode_data["id"],
-    title:               episode_data["name"],
-    air_date:            episode_data["air_date"],
-    episode_number:      episode_data["episode"],
-    characters_episodes: episode_data["characters"]
+    id:               episode_data["id"],
+    title:            episode_data["name"],
+    air_date:         episode_data["air_date"],
+    episode_number:   episode_data["episode"],
+    chars_in_ep_http: episode_data["characters"]
   )
 
   # Make the link between tables

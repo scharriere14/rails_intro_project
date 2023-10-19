@@ -8,4 +8,12 @@
 </div>
 
 
+<p><b>Episodes:</b></p>
+<ul>
+  <% @episode_ids.each do |episode_id| %>
+   <% episode = Episode.find_by_id(episode_id) %>
+
+      <li><%= link_to episode.title, episode_path(episode) %></li>
+  <% end %>
+</ul>
 <%= %>

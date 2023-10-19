@@ -7,7 +7,7 @@ class EpisodesController < ApplicationController
     @episode = Episode.find(params[:id])
 
     # to extract the charicters from the url
-    character_urls_json = @episode.characters_episodes
+    character_urls_json = @episode.chars_in_ep_http
     character_urls = JSON.parse(character_urls_json) # Parse the JSON string to an array
     @character_names = fetch_character_names(character_urls)
     @character_ids = fetch_character_ids(character_urls)

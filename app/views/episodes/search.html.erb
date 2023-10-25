@@ -7,14 +7,14 @@
   <h4>Episodes:</h4>
   <ul>
     <% @episodes.each do |episode| %>
-      <li><%= episode.title %></li>
+      <li><%= link_to episode.title , episode %></li>
     <% end %>
   </ul>
 
   <h4>Characters:</h4>
   <ul>
     <% @characters.each do |character| %>
-      <li><%= character.name %></li>
+      <li><%= link_to character.name , character %></li>
     <% end %>
   </ul>
 <% else %>

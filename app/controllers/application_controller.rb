@@ -48,4 +48,17 @@ class ApplicationController < ActionController::Base
     response = Net::HTTP.get(uri)
     JSON.parse(response)["results"]
   end
+
+  # # Search bar
+  # def search
+  #   if params[:search].blank?
+  #     redirect_to episodes_path and return
+  #   else
+  #     @parameter = params[:search].downcase
+  #     @results = Episode.all.where("lower(title) LIKE :search", search: "%#{@parameter}%")
+  #     Rails.logger.debug(@results.inspect)
+  #     puts "Search Results: #{@results.inspect}" # Add this line for debugging
+
+  #   end
+  # end
 end

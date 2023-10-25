@@ -1,0 +1,22 @@
+<h3>Search Results index page</h3>
+
+<% @episodes = Episode.where("lower(title) LIKE :search", search: "%#{params[:search].downcase}%") %>
+<% @characters = Character.where("lower(name) LIKE :search", search: "%#{params[:search].downcase}%") %>
+
+<% if @episodes.present? || @characters.present? %>
+  <h4>Episodes:</h4>
+  <ul>
+    <% @episodes.each do |episode| %>
+      <li><%= episode.title %></li>
+    <% end %>
+  </ul>
+
+  <h4>Characters:</h4>
+  <ul>
+    <% @characters.each do |character| %>
+      <li><%= character.name %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No results found</p>
+<% end %>

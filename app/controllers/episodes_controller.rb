@@ -1,7 +1,4 @@
 class EpisodesController < ApplicationController
-
-
-
   def index
     @episodes = Episode.all
   end
@@ -32,17 +29,17 @@ class EpisodesController < ApplicationController
   end
 end
 
-# doesnt work. skipping this and coding it into search.html
- # Search bar
- def search
-  if params[:search].blank?
-    # puts "Redirecting to episodes_path"
-    # redirect_to episodes_path and return
-    @episodes = Episode.all
+# # doesnt work. skipping this and coding it into search.html
+#  # Search bar
+#  def search
+#   if params[:search].blank?
+#     # puts "Redirecting to episodes_path"
+#     # redirect_to episodes_path and return
+#     @episodes = Episode.all
 
-  else
-    @search_parameter = params[:search].downcase
-    @results = Episode.where("lower(title) LIKE :search", search: "%#{@search_parameter}%")
+#   else
+#     @search_parameter = params[:search].downcase
+#     @results = Episode.where("lower(title) LIKE :search", search: "%#{@search_parameter}%")
 
-  end
-end
+#   end
+# end

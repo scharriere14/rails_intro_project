@@ -7,6 +7,6 @@ class CharactersController < ApplicationController
   def show
     @character = Character.find(params[:id])
     # Link to other table
-    @episode_ids = @character.episodes.pluck(:id)
+    @episode_ids = @character.episodes.distinct.pluck(:id)
   end
 end

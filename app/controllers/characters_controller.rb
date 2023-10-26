@@ -1,7 +1,7 @@
 class CharactersController < ApplicationController
   def index
     # instance variable
-    @characters = Character.all # right now only calls db 1 time
+    @characters = Character.page(params[:page])
   end
 
   def show

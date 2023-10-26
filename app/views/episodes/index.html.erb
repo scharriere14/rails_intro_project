@@ -3,7 +3,7 @@
 <ol class="ml-5">
   <% @episodes.each do |e| %>
     <li>
-      <%= link_to e.title, e %>
+      <%= link_to e.title, e, style: 'color: black;', class: 'has-text-black', onmouseover: "this.style.color='darkslategray'", onmouseout: "this.style.color='black'" %>
     </li>
   <% end %>
 </ol>

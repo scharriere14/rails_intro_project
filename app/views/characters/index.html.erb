@@ -5,7 +5,7 @@
 <ol class="ml-5">
   <% @characters.each do |c| %>
     <li>
-      <%= link_to c.name, c %>
+      <%= link_to c.name, c, style: 'color: black;', class: 'has-text-black', onmouseover: "this.style.color='darkslategray'", onmouseout: "this.style.color='black'" %>
     </li>
   <% end %>
 </ol>

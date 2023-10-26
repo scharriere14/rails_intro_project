@@ -10,7 +10,7 @@
     <% character = Character.find_by_id(character_id) %>
     <%# need to check because not everyone is listed %>
     <% if character %>
-      <li><%= link_to character.name, character_path(character) %></li>
+      <li><%= link_to character.name, character_path(character), style: 'color: black;', class: 'has-text-black', onmouseover: "this.style.color='darkslategray'", onmouseout: "this.style.color='black'" %></li>
     <% end %>
   <% end %>
 </ul>

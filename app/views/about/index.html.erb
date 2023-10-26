@@ -1,3 +1,4 @@
+<%# About Page. Set as default landing page%>
 <h1 class="title">About</h1>
 
   <p> I found a "Rick and Morty" dataset that includes all the characters from the TV show. Since this dataset was quite extensive (over 40 pages!), I decided to load just the first 20 pages for now. To enrich the database, I also included a dataset containing information about the episodes. The data is structured in an array with key-value pairs. Some of the keys are nested within arrays, so I'll need to extract them for viewing.</p>
@@ -5,4 +6,5 @@
   <p>  From the episode dataset, I'll need the Name, Airdate, Episode, and Characters. This dataset also includes characters not found in the character dataset, so when displaying the data, I'll need to filter it to only show the names in the dataset. To connect the two tables, a joiner table with CharacterID and EpisodeID is required.</p>
   <p>  These two datasets will combine to create a list of characters, each linked to the episodes they appear in. It will work both ways, allowing you to click on a character to see the episodes they're in and, conversely, click on an episode to see which characters are featured in it. It's a two-way street of exploration!</p>
 
+<%# ERD Diagram Image%>
 <%= image_tag("ERD.png", alt: "ERD Image") %>

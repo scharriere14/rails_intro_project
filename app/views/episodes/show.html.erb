@@ -5,7 +5,7 @@
 
 <p>First Aired: <%= @episode.air_date %></p>
 
-<p>Characters:</p>
+<h3><b>All Characters in this Episode:</b></h3>
 <ul>
   <% @character_ids.each do |character_id| %>
     <% character = Character.find_by_id(character_id) %>

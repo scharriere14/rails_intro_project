@@ -10,6 +10,6 @@
 <ul>
   <% @episode_ids.each do |episode_id| %>
     <% episode = Episode.find_by_id(episode_id) %>
-    <li><%= link_to episode.title, episode_path(episode), style: 'color: black;', class: 'has-text-black', onmouseover: "this.style.color='darkslategray'", onmouseout: "this.style.color='black'"  %></li>
+    <li><%= link_to episode.title, episode_path(episode)  %></li>
   <% end %>
 </ul>

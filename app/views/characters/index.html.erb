@@ -3,10 +3,9 @@
 <h1 class="title">Characters</h1>
 
 <ol class="ml-5">
-<% @characters.each do |c|%>
-<li>
-<%= link_to c.name , c %>
-</li>
-<% end %>
+  <% @characters.each do |c| %>
+    <li>
+      <%= link_to c.name, c %>
+    </li>
+  <% end %>
 </ol>
-

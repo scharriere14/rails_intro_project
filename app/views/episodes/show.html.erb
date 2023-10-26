@@ -1,17 +1,16 @@
- <div class="container has-text-centered">
-<h1 class="title"><%= @episode.title %> <%= @episode.episode_number%></h1>
+<div class="container has-text-centered">
+  <h1 class="title"><%= @episode.title %> <%= @episode.episode_number %></h1>
 </div>
 
-
-<p>First Aired: <%= @episode.air_date%> </p>
+<p>First Aired: <%= @episode.air_date %></p>
 
 <p>Characters:</p>
 <ul>
   <% @character_ids.each do |character_id| %>
-   <% character = Character.find_by_id(character_id) %>
-   <%# need to check because not everyone is listed %>
+    <% character = Character.find_by_id(character_id) %>
+    <%# need to check because not everyone is listed %>
     <% if character %>
       <li><%= link_to character.name, character_path(character) %></li>
-  <% end %>
+    <% end %>
   <% end %>
 </ul>
